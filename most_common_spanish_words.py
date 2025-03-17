@@ -1,6 +1,5 @@
 import random
-import time
-import os 
+from running import run
 
 spanish_dicts = [
     #verbs
@@ -64,15 +63,6 @@ enter 'all' to get all sorts of words:
             score+=1
     
     print(f"Your score is: {score}/{questions}")
-    time.sleep(1)
 
-    again = ""
+    running = run()
     
-    while "y" not in again.lower():
-      os.system("clear")
-      time.sleep(0.5)
-       
-      if "n" in again.lower():
-          running = False
-          break 
-      again = input("You must enter yes or no to play again or not: ")

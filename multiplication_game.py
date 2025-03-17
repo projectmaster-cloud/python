@@ -1,6 +1,4 @@
-import os
-import time
-
+from running import run
 print("Multiplication game")
 
 running = True
@@ -24,16 +22,8 @@ while running:
         if fails > 0: score-=1
 
     print(f"score: {score}/{multiples}")
-    time.sleep(1)
-
-    again = ""
     
-    while "y" not in again.lower():
-      os.system("clear")
-      time.sleep(0.5)
-       
-      if "n" in again.lower():
-          running = False
-          break 
-      again = input("You must enter yes or no to play again or not: ")
+    running = run()
+
+    
 
