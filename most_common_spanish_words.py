@@ -1,39 +1,68 @@
 import random
+from running import run
 
 spanish_dicts = [
     #verbs
-    [("ser", "to be")],
+    [('ser', 'to be'), ('estar', 'to be'), ('tener', 'to have'), ('hacer', 'to do, to make'), ('poder', 'to be able to'), ('decir', 'to say, to tell'), ('ir', 'to go'), ('ver', 'to see'), ('dar', 'to give'), ('saber', 'to know'), ('querer', 'to want'), ('llegar', 'to arrive'), ('pasar', 'to pass, to happen'), ('deber', 'to owe, should'), ('poner', 'to put'), ('parecer', 'to seem'), ('quedar', 'to stay, to remain'), ('creer', 'to believe'), ('hablar', 'to talk, to speak'), ('llevar', 'to carry, to bring'), ('dejar', 'to leave, to allow'), ('seguir', 'to follow, to continue'), ('encontrar', 'to find'), ('llamar', 'to call'), ('venir', 'to come'), ('pensar', 'to think'), ('salir', 'to leave, to go out'), ('trabajar', 'to work'), ('escribir', 'to write'), ('leer', 'to read'), ('vivir', 'to live'), ('sentir', 'to feel'), ('abrir', 'to open'), ('conocer', 'to know, to meet'), ('volver', 'to return, to come back'), ('tomar', 'to take'), ('esperar', 'to wait, to hope'), ('buscar', 'to search, to look for'), ('existir', 'to exist'), ('entrar', 'to enter'), ('trabajar', 'to work'), ('llorar', 'to cry'), ('estudiar', 'to study'), ('cumplir', 'to fulfill, to carry out'), ('morir', 'to die'), ('comer', 'to eat'), ('beber', 'to drink'), ('correr', 'to run'), ('abrir', 'to open'), ('andar', 'to walk'), ('terminar', 'to finish'), ('costar', 'to cost'), ('oír', 'to hear'), ('repetir', 'to repeat'), ('aparecer', 'to appear'), ('enseñar', 'to teach'), ('recordar', 'to remember'), ('preferir', 'to prefer'), ('contar', 'to count, to tell'), ('sacar', 'to take out, to remove'), ('morir', 'to die'), ('construir', 'to build'), ('cambiar', 'to change'), ('reir', 'to laugh'), ('exigir', 'to demand'), ('alcanzar', 'to reach'), ('ganar', 'to win, to earn'), ('comenzar', 'to begin'), ('subir', 'to go up, to rise'), ('bajar', 'to go down, to lower'), ('necesitar', 'to need'), ('terminar', 'to finish'), ('verificar', 'to verify'), ('caminar', 'to walk'), ('permitir', 'to permit'), ('utilizar', 'to use'), ('resolver', 'to resolve'), ('recordar', 'to remember'), ('perder', 'to lose'), ('sentarse', 'to sit down'), ('reconocer', 'to recognize'), ('tocar', 'to touch, to play an instrument'), ('comprar', 'to buy'), ('vender', 'to sell'), ('esperar', 'to wait, to hope'), ('exponer', 'to expose'), ('decidir', 'to decide'), ('reconocer', 'to recognize'), ('alcanzar', 'to reach, to attain'), ('permanecer', 'to remain'), ('afectar', 'to affect'), ('dudar', 'to doubt'), ('preparar', 'to prepare'), ('mostrar', 'to show'), ('conseguir', 'to get, to obtain'), ('encender', 'to light, to kindle'), ('organizar', 'to organize'), ('responder', 'to answer'), ('afirmar', 'to affirm'), ('luchar', 'to fight'),]
     #nouns
-    [("person", "persona")],
+    [('persona', 'person'), ('año', 'year'), ('cosa', 'thing'), ('momento', 'moment'), ('día', 'day'), ('hombre', 'man'), ('mujer', 'woman'), ('niño', 'child, boy'), ('niña', 'child, girl'), ('familia', 'family'), ('amigo', 'friend - male'), ('amiga', 'friend - female'), ('gente', 'people'), ('país', 'country'), ('ciudad', 'city'), ('trabajo', 'work, job'), ('escuela', 'school'), ('profesor', 'teacher - male'), ('profesora', 'teacher - female'), ('estudiante', 'student'), ('libro', 'book'), ('película', 'movie'), ('coche', 'car'), ('casa', 'house'), ('calle', 'street'), ('ordenador', 'computer'), ('teléfono', 'phone'), ('agua', 'water'), ('comida', 'food, meal'), ('pan', 'bread'), ('fruta', 'fruit'), ('verdura', 'vegetable'), ('café', 'coffee'), ('te', 'tea'), ('leche', 'milk'), ('vino', 'wine'), ('mesa', 'table'), ('silla', 'chair'), ('puerta', 'door'), ('ventana', 'window'), ('pared', 'wall'), ('techo', 'ceiling, roof'), ('suelo', 'floor'), ('zapato', 'shoe'), ('ropa', 'clothes'), ('camisa', 'shirt'), ('pantalón', 'pants'), ('falda', 'skirt'), ('chaqueta', 'jacket'), ('sombrero', 'hat'), ('reloj', 'watch, clock'), ('dinero', 'money'), ('banco', 'bank'), ('tienda', 'store, shop'), ('mercado', 'market'), ('pelota', 'ball'), ('juego', 'game'), ('deporte', 'sport'), ('música', 'music'), ('canción', 'song'), ('instrumento', 'instrument'), ('voz', 'voice'), ('cuerpo', 'body'), ('mano', 'hand'), ('pie', 'foot'), ('ojo', 'eye'), ('boca', 'mouth'), ('nariz', 'nose'), ('oreja', 'ear'), ('cabello', 'hair'), ('corazón', 'heart'), ('alma', 'soul'), ('mente', 'mind'), ('sueño', 'dream'), ('felicidad', 'happiness'), ('tristeza', 'sadness'), ('dolor', 'pain'), ('sentimiento', 'feeling'), ('problema', 'problem'), ('solución', 'solution'), ('éxito', 'success'), ('fracaso', 'failure'), ('amistad', 'friendship'), ('amor', 'love'), ('odio', 'hate'), ('miedo', 'fear'), ('paz', 'peace'), ('guerra', 'war'), ('libertad', 'freedom'), ('ley', 'law'), ('derecho', 'right'), ('gobierno', 'government'), ('presidente', 'president'), ('elección', 'election'), ('congreso', 'congress'), ('universidad', 'university'), ('instituto', 'institute'), ('hospital', 'hospital'), ('policía', 'police'), ('bombero', 'firefighter'),]
     #adjectives
-    [("bueno", "good")],
+    [('bueno', 'good'), ('malo', 'bad'), ('grande', 'big, large'), ('pequeño', 'small'), ('nuevo', 'new'), ('viejo', 'old'), ('bonito', 'pretty, nice'), ('feo', 'ugly'), ('alto', 'tall, high'), ('bajo', 'short, low'), ('delgado', 'thin'), ('gordo', 'fat'), ('rico', 'rich, delicious'), ('pobre', 'poor'), ('fácil', 'easy'), ('difícil', 'difficult'), ('interesante', 'interesting'), ('aburrido', 'boring'), ('lento', 'slow'), ('rápido', 'fast'), ('caliente', 'hot'), ('frío', 'cold'), ('largo', 'long'), ('corto', 'short'), ('lejos', 'far'), ('cerca', 'close'), ('rico', 'rich, tasty'), ('salado', 'salty'), ('dulce', 'sweet'), ('amargo', 'bitter'), ('malo', 'bad'), ('bueno', 'good'), ('joven', 'young'), ('viejo', 'old'), ('caro', 'expensive'), ('barato', 'cheap'), ('importante', 'important'), ('necesario', 'necessary'), ('hermoso', 'beautiful'), ('feo', 'ugly'), ('inteligente', 'smart'), ('tonto', 'silly, dumb'), ('rico', 'rich'), ('pobre', 'poor'), ('sano', 'healthy'), ('enfermo', 'sick'), ('divertido', 'fun'), ('serio', 'serious'), ('alegre', 'happy, cheerful'), ('triste', 'sad'), ('contento', 'content, happy'), ('desgraciado', 'unfortunate'), ('tranquilo', 'calm'), ('nervioso', 'nervous'), ('misterioso', 'mysterious'), ('seguro', 'sure, safe'), ('temeroso', 'fearful'), ('afortunado', 'lucky'), ('desafortunado', 'unlucky'), ('limpio', 'clean'), ('sucio', 'dirty'), ('rico', 'rich, tasty'), ('amable', 'kind'), ('simpático', 'nice, friendly'), ('antipático', 'unfriendly'), ('grande', 'big'), ('pequeño', 'small'), ('roto', 'broken'), ('intenso', 'intense'), ('sutil', 'subtle'), ('dulce', 'sweet'), ('amargo', 'bitter'), ('precioso', 'precious, beautiful'), ('peligroso', 'dangerous'), ('seguro', 'safe, secure'), ('pobre', 'poor'), ('rico', 'rich, delicious'), ('triste', 'sad'), ('divertido', 'fun'), ('extraño', 'strange'), ('común', 'common'), ('extraordinario', 'extraordinary'), ('cómodo', 'comfortable'), ('incómodo', 'uncomfortable'), ('mágico', 'magical'), ('increíble', 'incredible'), ('famoso', 'famous'), ('desconocido', 'unknown'), ('perfecto', 'perfect'), ('imperfecto', 'imperfect'), ('sincero', 'sincere'), ('falso', 'false'), ('feliz', 'happy'), ('triste', 'sad'), ('rico', 'rich, tasty'), ('feo', 'ugly'), ('hermoso', 'beautiful'), ('adorable', 'adorable'), ('asombroso', 'amazing'), ('horrible', 'horrible'),]
     #adverbs
-    [("muy", "very")],
+    [('muy', 'very'), ('bien', 'well'), ('mal', 'badly'), ('siempre', 'always'), ('nunca', 'never'), ('aquí', 'here'), ('allí', 'there'), ('allá', 'over there'), ('ahí', 'there, right there'), ('lejos', 'far'), ('cerca', 'close'), ('pronto', 'soon'), ('tarde', 'late'), ('temprano', 'early'), ('hoy', 'today'), ('mañana', 'tomorrow'), ('ayer', 'yesterday'), ('pasado', 'last, past'), ('ahora', 'now'), ('luego', 'later'), ('después', 'after, later'), ('antes', 'before'), ('durante', 'during'), ('siempre', 'always'), ('a menudo', 'often'), ('a veces', 'sometimes'), ('raramente', 'rarely'), ('probablemente', 'probably'), ('posiblemente', 'possibly'), ('seguramente', 'surely'), ('definitivamente', 'definitely'), ('realmente', 'really'), ('básicamente', 'basically'), ('perfectamente', 'perfectly'), ('completamente', 'completely'), ('totalmente', 'totally'), ('exactamente', 'exactly'), ('prácticamente', 'practically'), ('fácilmente', 'easily'), ('difícilmente', 'hardly, with difficulty'), ('cuidadosamente', 'carefully'), ('lentamente', 'slowly'), ('rápidamente', 'quickly'), ('suavemente', 'gently'), ('fuertemente', 'strongly'), ('más', 'more'), ('menos', 'less'), ('bastante', 'enough, quite'), ('tanto', 'so much'), ('demasiado', 'too much'), ('algo', 'something, somewhat'), ('nada', 'nothing'), ('todo', 'everything'), ('ningún', 'none, no'), ('alguien', 'someone'), ('nadie', 'no one, nobody'), ('donde', 'where'), ('cuando', 'when'), ('por qué', 'why'), ('cómo', 'how'), ('que', 'that'), ('quién', 'who'), ('así', 'like this, in this way'), ('de repente', 'suddenly'), ('en seguida', 'right away, immediately'), ('seguramente', 'surely'), ('especialmente', 'especially'), ('particularmente', 'particularly'), ('igualmente', 'equally'), ('con frecuencia', 'frequently'), ('de nuevo', 'again'), ('además', 'besides, furthermore'), ('por lo tanto', 'therefore'), ('por supuesto', 'of course'), ('sin embargo', 'however'), ('así que', 'so, thus'), ('aunque', 'although'), ('por favor', 'please'), ('entonces', 'then'), ('precisamente', 'precisely'), ('en general', 'generally'), ('habitualmente', 'habitually'), ('probablemente', 'probably'), ('desafortunadamente', 'unfortunately'), ('afortunadamente', 'fortunately'), ('prácticamente', 'practically'), ('esencialmente', 'essentially'), ('poco', 'a little, few'), ('mucho', 'a lot, much'), ('muchas veces', 'many times'), ('casi', 'almost'), ('totalmente', 'totally'), ('completamente', 'completely'), ('comúnmente', 'commonly'), ('por igual', 'equally'), ('justo', 'justly'), ('normalmente', 'normally'), ('absolutamente', 'absolutely'), ('deliberadamente', 'deliberately'), ('a menudo', 'often'),]
     #prepositions
-    [("a", "to")],
+    [('a', 'to, at'), ('ante', 'before (in space)'), ("antes", "before (in time)"), ('bajo', 'under, beneath'), ('cabe', 'next to, beside'), ('con', 'with'), ('contra', 'against'), ('de', 'of, from'), ('desde', 'since, from'), ('durante', 'during'), ('en', 'in, on, at'), ('entre', 'between, among'), ('hacia', 'towards, to'), ('hasta', 'until, up to'), ('para', 'for, to, in order to'), ('por', 'for, by, through'), ('según', 'according to'), ('sin', 'without'), ('sobre', 'on, about, over'), ('tras', 'after, behind'), ('a través de', 'through'), ('al lado de', 'next to, beside'), ('cerca de', 'near'), ('lejos de', 'far from'), ('encima de', 'on top of'), ('debajo de', 'underneath'), ('delante de', 'in front of'), ('detrás de', 'behind'), ('junto a', 'next to'), ('en frente de', 'in front of'), ('en medio de', 'in the middle of'), ('a la izquierda de', 'to the left of'), ('a la derecha de', 'to the right of'), ('alrededor de', 'around'), ('a lo largo de', 'along'), ('a causa de', 'because of'), ('en lugar de', 'instead of'), ('en cuanto a', 'with regard to'), ('por encima de', 'above'), ('por debajo de', 'below'), ('por fuera de', 'outside of'), ('por dentro de', 'inside of'), ('con respecto a', 'with respect to'), ('con tal de que', 'provided that'), ('en caso de', 'in case of'), ('a través de', 'through'), ('en torno a', 'around, about'), ('debido a', 'due to'), ('en contra de', 'against'), ('frente a', 'facing, in front of'), ('junto con', 'together with'), ('en medio de', 'in the middle of'), ('de acuerdo con', 'according to'), ('en virtud de', 'by virtue of'), ('de manera que', 'so that'), ('a medida que', 'as, in proportion to'), ('a pesar de', 'in spite of'), ('a partir de', 'starting from'), ('a lo largo de', 'throughout'), ('en vez de', 'instead of'), ('por parte de', 'by, on the part of'), ('al final de', 'at the end of'), ('a lo largo de', 'along'), ('gracias a', 'thanks to'), ('en beneficio de', 'for the benefit of'), ('en relación con', 'in relation to'), ('de forma que', 'so that, in such a way that'), ('de modo que', 'so that, in a way that'), ('por medio de', 'by means of'), ('en el caso de', 'in the case of'), ('por culpa de', 'because of, due to'), ('por lo tanto', 'therefore'), ('por lo que', 'so that, for what'), ('con tal de', 'provided that'), ('como si', 'as if'), ('a fin de', 'in order to'), ('a través de', 'through, across'), ('al margen de', 'apart from'), ('a nombre de', 'on behalf of'), ('en vista de', 'in view of'), ('a largo plazo', 'in the long term'), ('a corto plazo', 'in the short term'), ('a lo lejos', 'in the distance'), ('en cuanto', 'as soon as'), ('a lo sumo', 'at most'), ('de nuevo', 'again'), ('a fuerza de', 'by force of'), ('en lugar de', 'instead of'), ('por encima', 'above, over'), ('por debajo', 'below, under'), ('por debajo de', 'beneath'), ('en el medio de', 'in the middle of'), ('de acuerdo a', 'according to'), ('de acuerdo con', 'in agreement with'), ('en torno a', 'around, about'), ('al pie de', 'at the foot of'), ('al margen', 'aside, on the side'), ('en relación a', 'in relation to'), ('por encima de', 'over, above'), ('por debajo de', 'under, beneath'), ('al lado de', 'next to'),]
 ]
-#Learn how to get a random key for dict
+spanish_indexes = {"verbs" : 0, "nouns" : 1, "adjectives" : 2, "adverbs" : 3, "prepositions" : 4}
+def specific(type):
+    index = spanish_indexes[type]
+    return random.choice(spanish_dicts[index])
 def all():
     return random.choice(random.choice(spanish_dicts))
 
 running = True
-
 while running:
     score = 0
 
     questions = int(input("How much questions do you want to do? "))
-    #type_words = input("""Enter 'type' to get different caterioges of words or
-#Enter random to get all sorts of words""")
+    type_words = input("""
+Enter 'specific' to get different caterioges of words or 
+enter 'all' to get all sorts of words:
+""")
+    
+    while type_words != "all":
+        if type_words == "specific":
+            type = ""
+            while type not in spanish_indexes:
+                type = input("You mush what types of words (verbs, adjectives, nouns, adverbs, or prepositions) do you want? ")
+            break
+        type_words = input("""
+Enter 'specific' to get different caterioges of words or 
+enter 'all' to get all sorts of words:
+""")
 
     for i in range(0, questions):
-        spanish_pair = all()
+        if type_words == "specific":
+            spanish_pair = specific(type)  
+        else:
+            spanish_pair = all()
 
+        fails = 0
         player_ans = input(f"What is your answer from the word in spanish {spanish_pair[0]}? ")
 
         while player_ans != spanish_pair[1]:
             print("Wrong")
+            fails+=1
+            if fails > 0: print(f"This correct answer is {spanish_pair[1]}")
             player_ans = input(f"What is your answer from the word in spanish {spanish_pair[0]}? ")
+        
+        if fails > 0: score-=1
 
         if player_ans == spanish_pair[1]:
             print("correct")
             score+=1
+    
+    print(f"Your score is: {score}/{questions}")
+
+    running = run()
+    
